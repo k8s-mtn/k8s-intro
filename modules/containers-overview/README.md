@@ -9,7 +9,7 @@ This module goes over the history and basics of containers
 * Container options: rkt, Docker
 * Vocabulary to know: Image, Container
 * Docker Intro
-	* Docker File Basics
+	* Dockerfile Basics
 	* docker build
 	* docker images
 	* docker run (-d, --name, -p)
