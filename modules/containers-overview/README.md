@@ -2,9 +2,10 @@
 
 This module goes over the history and basics of containers
 
-### Outline
+## Outline
 
 * What are containers?
+* Why are containers so great?
 * Brief history of containers
 * Container options: rkt, Docker
 * Vocabulary to know: Image, Container
@@ -22,4 +23,5 @@ This module goes over the history and basics of containers
 * Advanced tips and tricks
 	* confd
 	* wait-for-it
+
 
