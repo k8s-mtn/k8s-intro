@@ -16,6 +16,7 @@ Have docker installed on your computer and ready to use
 	* Dockerfile Basics
 	* docker build
 	* docker images
+	* docker tag
 	* docker run (-d, --name, -p)
 	* docker ps (-a)
 	* docker stop

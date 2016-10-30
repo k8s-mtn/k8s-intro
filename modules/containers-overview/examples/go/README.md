@@ -1,4 +1,4 @@
-# Docker Image Example
+# Docker Image Example in Go
 
 This folder contains an example web application called `webapp`. It is compiled for linux and has a directory named 
 `assets` where its static content lives. 
