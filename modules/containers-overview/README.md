@@ -1,34 +1,14 @@
-# Containers Overview
+# Docker Image Example - Image Magician Website
 
-This module goes over the history and basics of containers
+This folder contains an example go service called `webapp` that serves our static website. It is compiled for linux and has a directory named `assets` where its static content lives.
 
-## Prerequisites
+The original source code is written in Go and is included for reference.
 
-Have docker installed on your computer and ready to use
+When the webapp runs it checks for an environment variable called `SITE`. If `SITE` is set to `1` it will use
+the static assets from the `assets/site1` directory. If the environment variable is set to `2` it will use the 
+static assets from the `assets/site2` directory. If it isn't set, it will default to `assets/site1`.
 
-## Outline
-
-* What are containers?
-* Why are containers cool?
-* Container options: rkt, Docker
-* Vocabulary to know: Image, Container
-* Docker Intro
-	* Dockerfile Basics
-	* docker build
-	* docker images
-	* docker tag
-	* docker run (-d, --name, -p)
-	* docker ps (-a)
-	* docker stop
-	* docker rm
-	* docker rmi
-* Docker Hub (private and public registries)
-* Running nginx web server example
-* Advanced tips and tricks
-	* confd
-	* wait-for-it
+The Dockerfile adds the compiled binary and the assets folder to the container when running `docker build`.
+There are comments in the Dockerfile explaining each line in more detail.
 
 
-## References
-
-https://techcrunch.com/2016/10/16/wtf-is-a-container/
