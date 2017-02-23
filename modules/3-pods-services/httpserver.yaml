@@ -4,11 +4,12 @@ metadata:
   name: http-server
   labels:
     app: demo
+    stuff: things
     
 spec:
   containers:
   - name: http-server
-    image: index.docker.io/clintonb11/containers-overview
+    image: clintonb11/containers-overview
     ports:  # primarily informational
     - name: http
-      containerPort: 8080    
+      containerPort: 8000    

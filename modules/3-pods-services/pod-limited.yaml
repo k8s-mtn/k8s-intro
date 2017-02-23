@@ -30,7 +30,6 @@ spec:
         cpu: 500m
         memory: 25Mi
 
-
     readinessProbe:
       httpGet:
         path: /ping

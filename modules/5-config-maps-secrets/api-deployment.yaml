@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: api-deployment
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -13,6 +13,8 @@ spec:
       - name: api
         image: k8smtn/demo-api
         env:
+        - name: RESIZE_ADDR
+          value: image-resizer:8000
         - name: IMGUR_ID
           valueFrom:
             secretKeyRef:
@@ -20,6 +22,10 @@ spec:
               key: imgur-id
         ports:
         - containerPort: 8000
-        env:
-        - name: RESIZE_ADDR
-          value: image-resizer:8000
+        volumeMounts:
+        - mountPath: /etc/ssl/certs
+          name: sslroots
+      volumes:
+      - hostPath:
+          path: /etc/ssl/certs
+        name: sslroots
