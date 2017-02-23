@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api
+        image: k8smtn/demo-api
+        env:
+        - name: IMGUR_ID
+          valueFrom:
+            secretKeyRef:
+              name: api
+              key: imgur-id
+        ports:
+        - containerPort: 8000
+        env:
+        - name: RESIZE_ADDR
+          value: image-resizer:8000
