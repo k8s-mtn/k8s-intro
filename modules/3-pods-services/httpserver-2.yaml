@@ -13,7 +13,7 @@ spec:
   #restartPolicy: Never
   containers:
   - name: http-server
-    image: index.docker.io/k8smtn/containers-overview
+    image: index.docker.io/clintonb11/containers-overview
     env:
     - name: SITE
       value: "2"
