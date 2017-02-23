@@ -43,8 +43,6 @@ spec:
  #         initialDelaySeconds: 5
   #        timeoutSeconds: 1
 
-      imagePullSecrets:
-      - name: dockerhub
       volumes:
         - hostPath:
             path: /usr/share/zoneinfo

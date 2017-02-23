@@ -4,18 +4,19 @@ metadata:
   name: ss-example
 spec:
   serviceName: ss-example
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
         app: ss-api
     spec:
+
       containers:
       - name: api
         image: k8smtn/demo-api
         env:
         - name: DELAY
-          value: 5s
+          value: 10s
 
         ports:  # primarily informational
         - name: http
