@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: image-resizer-deployment
+spec:
+  replicas: 3
+  revisionHistoryLimit: 3    # How many versions do you want to be able to roll back to
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0  # replicas are set to 3, so there must always be three available when this is zero
+      maxSurge: 1        # When updating, this allows me to surge to 4 running instances while it rolls out
+  template:
+    metadata:
+      labels:
+        app: image-resizer
+    spec:
+      containers:
+      - name: image-resizer
+        image: k8smtn/demo-worker
+        ports:
+        - containerPort: 8000
+        readinessProbe:   # Readiness probe won't allow traffic to be sent to this pod until it is ready
+          httpGet:
+            path: /ping
+            port: http
+        livenessProbe:    # Liveness probe is for health checking the service
+          httpGet:
+            path: /ping
+            port: http
+          timeoutSeconds: 1  # check the service every second by doing a GET on /ping
