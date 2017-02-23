@@ -1,0 +1,16 @@
+        volumeMounts:
+        - mountPath: /etc/ssl/certs
+          name: sslroots  
+          readOnly: true                  
+        - mountPath: /usr/share/zoneinfo
+          name: timezones       
+          readOnly: true
+
+
+      volumes:
+        - hostPath:
+            path: /etc/ssl/certs
+          name: sslroots  
+        - hostPath:
+            path: /usr/share/zoneinfo
+          name: timezones 

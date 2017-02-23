@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    command: ["/bin/sh"]
+
+    stdin: true
+    tty: true
+
+    volumeMounts:
+      - mountPath: /var/lib/mysql
+        name: data
+  volumes:
+    - hostPath:
+        path: /Users/Shared/mariadb
+      name: data
+
+# kubectl attach -t -i busybox
