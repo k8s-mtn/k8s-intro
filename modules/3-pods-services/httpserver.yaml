@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: http-server
+  labels:
+    app: demo
+    
+spec:
+  containers:
+  - name: http-server
+    image: index.docker.io/k8smtn/containers-overview
