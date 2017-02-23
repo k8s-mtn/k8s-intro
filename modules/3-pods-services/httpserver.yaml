@@ -9,3 +9,6 @@ spec:
   containers:
   - name: http-server
     image: index.docker.io/clintonb11/containers-overview
+    ports:  # primarily informational
+    - name: http
+      containerPort: 8080    
