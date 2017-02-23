@@ -19,7 +19,8 @@ spec:
       - name: image-resizer
         image: k8smtn/demo-worker
         ports:
-        - containerPort: 8000
+        - name: http
+          containerPort: 8000
         readinessProbe:   # Readiness probe won't allow traffic to be sent to this pod until it is ready
           httpGet:
             path: /ping
