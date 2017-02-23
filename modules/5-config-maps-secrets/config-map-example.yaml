@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-config-map
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+
+    command: ["/bin/sh"]
+
+    stdin: true
+    tty: true
+
+    volumeMounts:
+    - mountPath: /config
+      name: settings
+  volumes:
+    - name: settings
+      configMap:
+        name: settings
+        items:
+        - key: settings
+          path: settings.json
+        - key: values
+          path: values.json
+
+# kubectl attach -t -i busybox-configmap
