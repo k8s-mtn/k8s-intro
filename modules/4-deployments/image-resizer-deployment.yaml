@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: image-resizer-deployment
 spec:
-  replicas: 10
+  replicas: 3
   revisionHistoryLimit: 3    # How many versions do you want to be able to roll back to
   strategy:
     type: RollingUpdate
