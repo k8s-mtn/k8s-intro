@@ -1,0 +1,33 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: ss-example
+spec:
+  serviceName: ss-example
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: ss-api
+    spec:
+      containers:
+      - name: api
+        image: k8smtn/demo-api
+        env:
+        - name: DELAY
+          value: 5s
+
+        ports:  # primarily informational
+        - name: http
+          containerPort: 8000
+
+        readinessProbe:   # Readiness probe won't allow traffic to be sent to this pod until it is ready
+          httpGet:
+            path: /ping
+            port: http
+        livenessProbe:    # Liveness probe is for health checking the service
+          httpGet:
+            path: /ping
+            port: http
+          initialDelaySeconds: 5 
+          timeoutSeconds: 1  # check the service every second by doing a GET on /ping
