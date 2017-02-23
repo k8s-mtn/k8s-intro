@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: default
+  name: api-limited
+  labels:
+    app: api
+    tier: frontend
+    release: canary
+spec:
+  #activeDeadlineSeconds: 300
+  #restartPolicy: Never
+  containers:
+  - name: api
+    image: index.docker.io/k8smtn/demo-api
+    env:
+    - name: DELAY
+      value: 10s
+
+    ports:  # primarily informational
+    - name: http
+      containerPort: 8000
+
+    resources:
+      requests:
+        cpu: 50m
+        memory: 15Mi
+      limits:
+        cpu: 500m
+        memory: 25Mi
+
+
+    readinessProbe:
+      httpGet:
+        path: /ping
+        port: http
+    livenessProbe:
+      httpGet:
+        path: /ping
+        port: http
+      timeoutSeconds: 1      
